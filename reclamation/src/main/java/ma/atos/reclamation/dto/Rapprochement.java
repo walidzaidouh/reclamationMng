@@ -34,7 +34,6 @@ public class Rapprochement {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-
     public boolean isEcart() {
         return ecart;
     }
