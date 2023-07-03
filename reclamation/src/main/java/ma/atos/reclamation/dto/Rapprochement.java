@@ -39,6 +39,7 @@ public class Rapprochement {
         return ecart;
     }
 
+
     public void setEcart(boolean ecart) {
         this.ecart = ecart;
     }
