@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 public class Rapprochement {
 
+
     private Caisse caisse;
     private LocalDateTime date;
     private boolean ecart;
