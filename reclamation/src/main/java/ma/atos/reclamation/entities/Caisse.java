@@ -1,9 +1,17 @@
-package ma.atos.reclamation.dto;
+package ma.atos.reclamation.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
+
+@Entity
 public class Caisse {
 
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     private String reffrence;
 
@@ -11,19 +19,12 @@ public class Caisse {
     private String devise;
     private BigDecimal montant;
 
-    public Caisse(String id, String etat, String devise, BigDecimal montant) {
-        this.reffrence = reffrence;
-        this.etat = etat;
-        this.devise = devise;
-        this.montant = montant;
-    }
-
-    public String getId() {
+    public String getReffrence() {
         return reffrence;
     }
 
-    public void setId(String id) {
-        this.reffrence = id;
+    public void setReffrence(String reffrence) {
+        this.reffrence = reffrence;
     }
 
     public String getEtat() {
