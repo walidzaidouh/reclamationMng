@@ -4,21 +4,30 @@ import java.math.BigDecimal;
 
 public class Caisse {
 
+    private String id;
+
     private String etat;
     private String devise;
     private BigDecimal montant;
 
-    public Caisse(String etat, String devise, BigDecimal montant) {
+    public Caisse(String id, String etat, String devise, BigDecimal montant) {
+        this.id = id;
         this.etat = etat;
         this.devise = devise;
         this.montant = montant;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getEtat() {
         return etat;
     }
-
-    //Test
 
     public void setEtat(String etat) {
         this.etat = etat;

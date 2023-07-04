@@ -6,4 +6,6 @@ public interface Distributeur {
     public void adddistributeur();
 
     public void deletedistributeur();
+
+    public void updatedistrubuted();
 }

@@ -17,4 +17,10 @@ public class DitributeurImpl implements Distributeur {
     public void deletedistributeur() {
 
     }
+
+    @Override
+    public void updatedistrubuted() {
+
+    }
+
 }
