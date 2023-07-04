@@ -23,11 +23,17 @@ public class Caisse {
         this.montant = montant;
     }
 
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
     public String getEtat() {
         return etat;
     }
-
-    //Test
 
     public void setEtat(String etat) {
         this.etat = etat;
