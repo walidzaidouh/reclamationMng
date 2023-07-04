@@ -13,6 +13,7 @@ public class Transaction {
     private LocalDateTime date;
     private boolean isRapprochement;
 
+
     public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean isRapprochement) {
         this.reference = reference;
         this.typePaiement = typePaiement;
@@ -20,6 +21,9 @@ public class Transaction {
         this.date = date;
         this.isRapprochement = isRapprochement;
     }
+
+
+
 
     public String getReference() {
         return reference;
@@ -61,4 +65,5 @@ public class Transaction {
     public void setRapprochement(boolean rapprochement) {
         isRapprochement = rapprochement;
     }
+
 }
