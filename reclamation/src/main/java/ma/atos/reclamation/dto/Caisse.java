@@ -9,10 +9,18 @@ public class Caisse {
     private String devise;
     private BigDecimal montant;
 
-    public Caisse(String etat, String devise, BigDecimal montant, String reference) {
+    public Caisse(String reference, String etat, String devise, BigDecimal montant) {
+        this.reference = reference;
         this.etat = etat;
         this.devise = devise;
         this.montant = montant;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
         this.reference = reference;
     }
 
@@ -38,13 +46,5 @@ public class Caisse {
 
     public void setMontant(BigDecimal montant) {
         this.montant = montant;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
     }
 }
