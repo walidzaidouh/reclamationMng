@@ -6,19 +6,29 @@ import java.time.LocalDateTime;
 public class Rapprochement {
 
 
+
+    private String reference;
     private Caisse caisse;
     private LocalDateTime date;
     private boolean ecart;
 
     private BigDecimal montantEcart;
 
-    public Rapprochement(Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
+    public Rapprochement(String reference, Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
+        this.reference = reference;
         this.caisse = caisse;
         this.date = date;
         this.ecart = ecart;
         this.montantEcart = montantEcart;
     }
 
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
     public Caisse getCaisse() {
         return caisse;
     }
