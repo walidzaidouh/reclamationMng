@@ -18,6 +18,8 @@ public class Caisse {
         return etat;
     }
 
+    //Test
+
     public void setEtat(String etat) {
         this.etat = etat;
     }
