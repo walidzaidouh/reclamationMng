@@ -1,30 +1,41 @@
 package ma.atos.reclamation.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Facture {
 
-    private String refernce;
+    private String reference;
     private List<Transaction> transactionList;
     private Client client;
     private LocalDateTime dateFacture;
     private LocalDateTime dateEcheance;
+    private BigDecimal montant;
 
-    public Facture(String refernce, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance) {
-        this.refernce = refernce;
+    public BigDecimal getMontant() {
+        return montant;
+    }
+
+    public void setMontant(BigDecimal montant) {
+        this.montant = montant;
+    }
+
+    public Facture(String reference, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant) {
+        this.reference = reference;
         this.transactionList = transactionList;
         this.client = client;
         this.dateFacture = dateFacture;
         this.dateEcheance = dateEcheance;
+        this.montant = montant;
     }
 
     public String getRefernce() {
-        return refernce;
+        return reference;
     }
 
     public void setRefernce(String refernce) {
-        this.refernce = refernce;
+        this.reference = refernce;
     }
 
     public List<Transaction> getTransactionList() {
