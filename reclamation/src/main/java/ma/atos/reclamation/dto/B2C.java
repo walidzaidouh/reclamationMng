@@ -1,12 +1,14 @@
 package ma.atos.reclamation.dto;
 
+import java.util.List;
+
 public class B2C extends Client{
 
     private String cin;
     private String nomComplet;
 
-    public B2C(String reference, String adresse, String cin, String nomComplet) {
-        super(reference, adresse);
+    public B2C(String reference, String adresse, List<Facture> factureList, String cin, String nomComplet) {
+        super(reference, adresse, factureList);
         this.cin = cin;
         this.nomComplet = nomComplet;
     }

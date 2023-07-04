@@ -1,16 +1,18 @@
 package ma.atos.reclamation.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Rapprochement {
 
+
     private Caisse caisse;
-    private LocalDate date;
+    private LocalDateTime date;
     private boolean ecart;
+
     private BigDecimal montantEcart;
 
-    public Rapprochement(Caisse caisse, LocalDate date, boolean ecart, BigDecimal montantEcart) {
+    public Rapprochement(Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
         this.caisse = caisse;
         this.date = date;
         this.ecart = ecart;
@@ -25,17 +27,17 @@ public class Rapprochement {
         this.caisse = caisse;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
-
     public boolean isEcart() {
         return ecart;
     }
+
 
     public void setEcart(boolean ecart) {
         this.ecart = ecart;

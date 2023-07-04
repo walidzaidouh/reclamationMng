@@ -1,12 +1,14 @@
 package ma.atos.reclamation.dto;
 
+import java.math.BigDecimal;
+
 public class Caisse {
 
     private String etat;
     private String devise;
-    private String montant;
+    private BigDecimal montant;
 
-    public Caisse(String etat, String devise, String montant) {
+    public Caisse(String etat, String devise, BigDecimal montant) {
         this.etat = etat;
         this.devise = devise;
         this.montant = montant;
@@ -28,11 +30,11 @@ public class Caisse {
         this.devise = devise;
     }
 
-    public String getMontant() {
+    public BigDecimal getMontant() {
         return montant;
     }
 
-    public void setMontant(String montant) {
+    public void setMontant(BigDecimal montant) {
         this.montant = montant;
     }
 }

@@ -8,15 +8,14 @@ public class Client {
     private String adresse;
     private List<Facture> factureList;
 
-    public String getReference() {
-        return reference;
-    }
-
-
-    public Client(String reference, String adresse,List<Facture> factureList) {
+    public Client(String reference, String adresse, List<Facture> factureList) {
         this.reference = reference;
         this.adresse = adresse;
         this.factureList = factureList;
+    }
+
+    public String getReference() {
+        return reference;
     }
 
     public void setReference(String reference) {
