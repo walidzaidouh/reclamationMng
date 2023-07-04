@@ -23,6 +23,7 @@ public class Transaction {
         return reference;
     }
 
+
     public void setReference(String reference) {
         this.reference = reference;
     }
