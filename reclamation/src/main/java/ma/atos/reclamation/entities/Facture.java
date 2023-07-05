@@ -26,16 +26,18 @@ public class Facture {
     private LocalDateTime dateEcheance;
 
     private BigDecimal montant;
+    private String statut;
 
     public Facture() {}
 
-    public Facture(String reference, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant) {
+    public Facture(String reference, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant,String statut) {
         this.reference = reference;
         this.transactionList = transactionList;
         this.client = client;
         this.dateFacture = dateFacture;
         this.dateEcheance = dateEcheance;
         this.montant = montant;
+        this.statut = statut;
     }
 
     public Long getId() {
