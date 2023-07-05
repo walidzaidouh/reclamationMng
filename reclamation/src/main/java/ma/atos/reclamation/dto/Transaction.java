@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 public class Transaction {
 
+    //private Long id;
     private String reference;
     private TypePaiement typePaiement;
     private BigDecimal montant;
