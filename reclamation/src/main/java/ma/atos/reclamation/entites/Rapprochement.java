@@ -1,28 +1,24 @@
-package ma.atos.reclamation.dto;
+package ma.atos.reclamation.entites;
 
 import java.math.BigDecimal;
-
 import java.time.LocalDateTime;
 
 public class Rapprochement {
 
 
     private String reference;
-
     private Caisse caisse;
     private LocalDateTime date;
-    private  boolean ecart;
+    private boolean ecart;
 
-    private BigDecimal montantecart;
-    public Rapprochement(Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantecart) {
+    private BigDecimal montantEcart;
 
     public Rapprochement(String reference, Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
         this.reference = reference;
-
         this.caisse = caisse;
         this.date = date;
         this.ecart = ecart;
-        this.montantecart = montantecart;
+        this.montantEcart = montantEcart;
     }
 
     public String getReference() {
@@ -48,20 +44,20 @@ public class Rapprochement {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-
     public boolean isEcart() {
         return ecart;
     }
+
 
     public void setEcart(boolean ecart) {
         this.ecart = ecart;
     }
 
-    public BigDecimal getMontantecart() {
-        return montantecart;
+    public BigDecimal getMontantEcart() {
+        return montantEcart;
     }
 
-    public void setMontantecart(BigDecimal montantecart) {
-        this.montantecart = montantecart;
+    public void setMontantEcart(BigDecimal montantEcart) {
+        this.montantEcart = montantEcart;
     }
 }

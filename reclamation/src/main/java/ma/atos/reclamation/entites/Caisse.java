@@ -1,49 +1,33 @@
-package ma.atos.reclamation.dto;
+package ma.atos.reclamation.entites;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
+
 public class Caisse {
-    public String getReference() {
-        return reference;
-    }
 
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    private String reffrence;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String reference;
-
     private String etat;
     private String devise;
     private BigDecimal montant;
 
-
-    public Caisse(String id, String etat, String devise, BigDecimal montant) {
-        this.reffrence = reffrence;
-
     public Caisse(String reference, String etat, String devise, BigDecimal montant) {
         this.reference = reference;
-
         this.etat = etat;
         this.devise = devise;
         this.montant = montant;
     }
 
-
-    public String getId() {
-        return reffrence;
-    }
-
-    public void setId(String id) {
-        this.reffrence = id;
-
     public String getReference() {
         return reference;
     }
 
     public void setReference(String reference) {
         this.reference = reference;
-
     }
 
     public String getEtat() {
