@@ -1,7 +1,5 @@
 package ma.atos.reclamation.dto;
-
 import java.math.BigDecimal;
-
 public class Caisse {
     public String getReference() {
         return reference;
@@ -11,17 +9,33 @@ public class Caisse {
         this.reference = reference;
     }
 
+    private String reffrence;
+
     private String reference;
+
     private String etat;
     private String devise;
     private BigDecimal montant;
 
+
+    public Caisse(String id, String etat, String devise, BigDecimal montant) {
+        this.reffrence = reffrence;
+
     public Caisse(String reference, String etat, String devise, BigDecimal montant) {
         this.reference = reference;
+
         this.etat = etat;
         this.devise = devise;
         this.montant = montant;
     }
+
+
+    public String getId() {
+        return reffrence;
+    }
+
+    public void setId(String id) {
+        this.reffrence = id;
 
     public String getReference() {
         return reference;
@@ -29,6 +43,7 @@ public class Caisse {
 
     public void setReference(String reference) {
         this.reference = reference;
+
     }
 
     public String getEtat() {
