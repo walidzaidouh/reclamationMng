@@ -1,9 +1,7 @@
 package ma.atos.reclamation.entities;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Distributeur {
@@ -11,13 +9,18 @@ public class Distributeur {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
     private String refernce;
     private String nom;
+    @OneToMany(mappedBy = "distributeur")
+    private List<Agence> agences;
 
     public Distributeur(String refernce, String nom) {
         this.refernce = refernce;
         this.nom = nom;
+    }
+
+    public Distributeur() {
+
     }
 
     public String getRefernce() {

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Entity
+
 public class Caisse {
 
     @Id
