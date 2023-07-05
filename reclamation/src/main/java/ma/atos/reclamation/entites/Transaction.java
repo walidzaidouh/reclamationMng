@@ -35,7 +35,6 @@ private long id;
     @Enumerated(EnumType.STRING)
     private String Type;
 
-
     /*public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean isRapprochement,Facture facture) {
         this.reference = reference;
         this.typePaiement = typePaiement;
