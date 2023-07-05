@@ -7,11 +7,13 @@ import java.time.LocalDateTime;
 
 public class Transaction {
 
+    //private Long id;
     private String reference;
     private TypePaiement typePaiement;
     private BigDecimal montant;
     private LocalDateTime date;
     private boolean isRapprochement;
+
 
     public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean isRapprochement) {
         this.reference = reference;
@@ -20,6 +22,9 @@ public class Transaction {
         this.date = date;
         this.isRapprochement = isRapprochement;
     }
+
+
+
 
     public String getReference() {
         return reference;
@@ -61,4 +66,5 @@ public class Transaction {
     public void setRapprochement(boolean rapprochement) {
         isRapprochement = rapprochement;
     }
+
 }

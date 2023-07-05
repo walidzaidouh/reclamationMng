@@ -3,6 +3,13 @@ package ma.atos.reclamation.dto;
 import java.math.BigDecimal;
 
 public class Caisse {
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     private String reference;
     private String etat;
