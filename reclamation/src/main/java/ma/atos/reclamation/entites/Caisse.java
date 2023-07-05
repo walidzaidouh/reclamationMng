@@ -1,16 +1,15 @@
-package ma.atos.reclamation.dto;
+package ma.atos.reclamation.entites;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 public class Caisse {
-    public String getReference() {
-        return reference;
-    }
 
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String reference;
     private String etat;
     private String devise;
