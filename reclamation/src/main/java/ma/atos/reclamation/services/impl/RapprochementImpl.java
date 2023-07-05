@@ -25,9 +25,9 @@ public class RapprochementImpl implements Rapprochement {
     @Override
     public BigDecimal calculEcart(String refCaisse) {
 
-        ma.atos.reclamation.dto.Caisse caisseDto = caisse.fi(refCaisse);
+        ma.atos.reclamation.dto.Caisse caisseDto = null;
 
-        List<ma.atos.reclamation.dto.Transaction> transactionList = transaction.list();
+        List<ma.atos.reclamation.dto.Transaction> transactionList = transaction.transactionList();
 
 
         BigDecimal tr = BigDecimal.ZERO;
