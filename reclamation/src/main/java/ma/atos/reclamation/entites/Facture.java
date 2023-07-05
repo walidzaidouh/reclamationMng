@@ -1,10 +1,16 @@
 package ma.atos.reclamation.entites;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
 @Entity
 public class Facture {
 
@@ -21,44 +27,4 @@ public class Facture {
     private LocalDateTime dateEcheance;
     private BigDecimal montant;
 
-
-    public String getRefernce() {
-        return reference;
-    }
-
-    public void setRefernce(String refernce) {
-        this.reference = refernce;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public LocalDateTime getDateFacture() {
-        return dateFacture;
-    }
-
-    public void setDateFacture(LocalDateTime dateFacture) {
-        this.dateFacture = dateFacture;
-    }
-
-    public LocalDateTime getDateEcheance() {
-        return dateEcheance;
-    }
-
-    public void setDateEcheance(LocalDateTime dateEcheance) {
-        this.dateEcheance = dateEcheance;
-    }
-
-    public BigDecimal getMontant() {
-        return montant;
-    }
-
-    public void setMontant(BigDecimal montant) {
-        this.montant = montant;
-    }
 }
