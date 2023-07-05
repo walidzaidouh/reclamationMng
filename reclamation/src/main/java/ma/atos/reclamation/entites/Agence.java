@@ -1,7 +1,6 @@
 package ma.atos.reclamation.entites;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +15,7 @@ public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String code;
     private String nom;
     private String localisation;
