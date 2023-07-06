@@ -1,8 +1,8 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.services.Facture;
+import ma.atos.reclamation.services.FactureService;
 
-public class FactureImpl implements Facture {
+public class FactureServiceImpl implements FactureService {
     @Override
     public void afficherFactures() {
      /*   List<Facture> factures = factureRepository.findAll();

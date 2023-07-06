@@ -11,12 +11,12 @@ public class AgenceDTO {
     private String code;
     private String nom;
     private String localisation;
-    private Distributeur distributeur;
+    private DistributeurDTO distributeurDTO;
 
-    public AgenceDTO(String code, String nom, String localisation, Distributeur distributeur) {
+    public AgenceDTO(String code, String nom, String localisation, DistributeurDTO distributeurDTO) {
         this.code = code;
         this.nom = nom;
         this.localisation = localisation;
-        this.distributeur = distributeur;
+        this.distributeurDTO = distributeurDTO;
     }
 }

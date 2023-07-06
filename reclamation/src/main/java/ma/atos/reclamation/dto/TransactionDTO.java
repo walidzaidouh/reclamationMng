@@ -5,7 +5,7 @@ import ma.atos.reclamation.enums.TypePaiement;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class TransactionDTO {
 
     //private Long id;
     private String reference;
@@ -15,7 +15,7 @@ public class Transaction {
     private boolean isRapprochement;
 
 
-    public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean isRapprochement) {
+    public TransactionDTO(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean isRapprochement) {
         this.reference = reference;
         this.typePaiement = typePaiement;
         this.montant = montant;

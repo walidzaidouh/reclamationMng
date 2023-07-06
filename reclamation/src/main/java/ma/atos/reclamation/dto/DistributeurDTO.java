@@ -1,11 +1,11 @@
 package ma.atos.reclamation.dto;
 
-public class Distributeur {
+public class DistributeurDTO {
 
     private String refernce;
     private String nom;
 
-    public Distributeur(String refernce, String nom) {
+    public DistributeurDTO(String refernce, String nom) {
         this.refernce = refernce;
         this.nom = nom;
     }
