@@ -3,19 +3,19 @@ package ma.atos.reclamation.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Rapprochement {
+public class RapprochementDTO {
 
 
     private String reference;
-    private Caisse caisse;
+    private CaisseDTO caisseDTO;
     private LocalDateTime date;
     private boolean ecart;
 
     private BigDecimal montantEcart;
 
-    public Rapprochement(String reference, Caisse caisse, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
+    public RapprochementDTO(String reference, CaisseDTO caisseDTO, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
         this.reference = reference;
-        this.caisse = caisse;
+        this.caisseDTO = caisseDTO;
         this.date = date;
         this.ecart = ecart;
         this.montantEcart = montantEcart;
@@ -29,12 +29,12 @@ public class Rapprochement {
         this.reference = reference;
     }
 
-    public Caisse getCaisse() {
-        return caisse;
+    public CaisseDTO getCaisse() {
+        return caisseDTO;
     }
 
-    public void setCaisse(Caisse caisse) {
-        this.caisse = caisse;
+    public void setCaisse(CaisseDTO caisseDTO) {
+        this.caisseDTO = caisseDTO;
     }
 
     public LocalDateTime getDate() {

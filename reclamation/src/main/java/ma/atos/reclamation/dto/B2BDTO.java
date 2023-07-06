@@ -2,15 +2,15 @@ package ma.atos.reclamation.dto;
 
 import java.util.List;
 
-public class B2B extends Client{
+public class B2BDTO extends ClientDTO {
 
     private String registreCommerce;
     private String patente;
     private String fax;
     private String raisonSocial;
 
-    public B2B(String reference, String adresse, List<Facture> factureList, String registreCommerce, String patente, String fax, String raisonSocial) {
-        super(reference, adresse, factureList);
+    public B2BDTO(String reference, String adresse, List<FactureDTO> factureDTOList, String registreCommerce, String patente, String fax, String raisonSocial) {
+        super(reference, adresse, factureDTOList);
         this.registreCommerce = registreCommerce;
         this.patente = patente;
         this.fax = fax;

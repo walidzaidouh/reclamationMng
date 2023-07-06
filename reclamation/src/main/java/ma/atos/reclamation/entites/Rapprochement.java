@@ -3,8 +3,7 @@ package ma.atos.reclamation.entites;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import ma.atos.reclamation.dto.Caisse;
-import ma.atos.reclamation.dto.Transaction;
+import ma.atos.reclamation.dto.CaisseDTO;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,7 +22,7 @@ public class Rapprochement {
     private String reference;
     @ManyToOne
     @JoinColumn(name = "caisse_id")
-    private Caisse caisse;
+    private CaisseDTO caisseDTO;
     private LocalDateTime date;
     private boolean ecart;
     private BigDecimal montantEcart;

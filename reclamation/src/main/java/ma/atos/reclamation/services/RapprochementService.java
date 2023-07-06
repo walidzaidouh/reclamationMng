@@ -2,6 +2,6 @@ package ma.atos.reclamation.services;
 
 import java.math.BigDecimal;
 
-public interface Rapprochement {
+public interface RapprochementService {
     BigDecimal calculEcart(String refCaisse);
 }

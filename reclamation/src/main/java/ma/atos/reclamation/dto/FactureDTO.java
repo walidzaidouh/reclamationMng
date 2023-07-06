@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Facture {
+public class FactureDTO {
 
     private String reference;
-    private List<Transaction> transactionList;
-    private Client client;
+    private List<TransactionDTO> transactionDTOList;
+    private ClientDTO clientDTO;
     private LocalDateTime dateFacture;
     private LocalDateTime dateEcheance;
     private BigDecimal montant;
@@ -21,10 +21,10 @@ public class Facture {
         this.montant = montant;
     }
 
-    public Facture(String reference, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant) {
+    public FactureDTO(String reference, List<TransactionDTO> transactionDTOList, ClientDTO clientDTO, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant) {
         this.reference = reference;
-        this.transactionList = transactionList;
-        this.client = client;
+        this.transactionDTOList = transactionDTOList;
+        this.clientDTO = clientDTO;
         this.dateFacture = dateFacture;
         this.dateEcheance = dateEcheance;
         this.montant = montant;
@@ -38,20 +38,20 @@ public class Facture {
         this.reference = refernce;
     }
 
-    public List<Transaction> getTransactionList() {
-        return transactionList;
+    public List<TransactionDTO> getTransactionList() {
+        return transactionDTOList;
     }
 
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
+    public void setTransactionList(List<TransactionDTO> transactionDTOList) {
+        this.transactionDTOList = transactionDTOList;
     }
 
-    public Client getClient() {
-        return client;
+    public ClientDTO getClient() {
+        return clientDTO;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(ClientDTO clientDTO) {
+        this.clientDTO = clientDTO;
     }
 
     public LocalDateTime getDateFacture() {

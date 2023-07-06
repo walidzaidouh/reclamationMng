@@ -3,7 +3,7 @@ package ma.atos.reclamation.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface Facture {
+public interface FactureService {
     // Méthode pour afficher les factures
     void afficherFactures();
     //List<Facture> factures = factureRepository.findAll();

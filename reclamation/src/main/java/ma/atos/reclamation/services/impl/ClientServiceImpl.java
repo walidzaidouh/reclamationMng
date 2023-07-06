@@ -3,7 +3,6 @@ package ma.atos.reclamation.services.impl;
 import ma.atos.reclamation.entites.Client;
 import ma.atos.reclamation.repositories.ClientRepository;
 import ma.atos.reclamation.services.ClientService;
-import ma.atos.reclamation.services.Facture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

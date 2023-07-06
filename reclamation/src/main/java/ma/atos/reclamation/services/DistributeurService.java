@@ -1,4 +1,4 @@
 package ma.atos.reclamation.services;
 
-public interface Distributeur {
+public interface DistributeurService {
 }
