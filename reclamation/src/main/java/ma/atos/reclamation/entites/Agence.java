@@ -1,5 +1,7 @@
 package ma.atos.reclamation.entites;
 
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,5 +25,6 @@ public class Agence {
     @ManyToOne
     @JoinColumn(name = "distributeur_id")
     private Distributeur distributeur;
+
 
 }

@@ -1,5 +1,12 @@
 package ma.atos.reclamation.entites;
 
+import org.hibernate.annotations.ManyToAny;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+public class Rapprochement {
+    
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -7,9 +14,11 @@ public class Rapprochement {
 
 
     private String reference;
-    private Caisse caisse;
     private LocalDateTime date;
     private boolean ecart;
+  @ManyToOne
+    @JoinColumn(name="caisse_id")
+        private Caisse caisse;
 
     private BigDecimal montantEcart;
 
@@ -60,4 +69,5 @@ public class Rapprochement {
     public void setMontantEcart(BigDecimal montantEcart) {
         this.montantEcart = montantEcart;
     }
+
 }
