@@ -52,7 +52,7 @@ public class AgenceServiceImpl implements AgenceService {
     public void createAgence(AgenceDTO agenceDTO) {
 
         Agence agence = new Agence();
-        BeanUtils.copyProperties(agence, agenceDTO);
+        BeanUtils.copyProperties(agenceDTO, agence);
         agenceRepository.save(agence);
 
     }

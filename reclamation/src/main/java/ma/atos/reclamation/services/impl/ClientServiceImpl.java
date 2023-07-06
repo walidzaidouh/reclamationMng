@@ -3,7 +3,10 @@ package ma.atos.reclamation.services.impl;
 import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.entites.Agence;
+import ma.atos.reclamation.entites.B2B;
+import ma.atos.reclamation.entites.B2C;
 import ma.atos.reclamation.entites.Client;
+import ma.atos.reclamation.enums.TypeClient;
 import ma.atos.reclamation.repositories.ClientRepository;
 import ma.atos.reclamation.services.ClientService;
 import org.springframework.beans.BeanUtils;
@@ -47,5 +50,17 @@ public class ClientServiceImpl implements ClientService {
         BeanUtils.copyProperties(client, clientDTO);
 
         return clientDTO;
+    }
+
+    public void add(ClientDTO clientDTO) {
+
+        if (clientDTO.getType().equals(TypeClient.B2B)) {
+            B2B b2b = new B2B();
+
+        }else {
+            B2C b2C = new B2C();
+
+        }
+
     }
 }
