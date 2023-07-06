@@ -1,57 +1,22 @@
 package ma.atos.reclamation.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class CaisseDTO {
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
     private String reference;
     private String etat;
     private String devise;
     private BigDecimal montant;
 
-    public CaisseDTO(String reference, String etat, String devise, BigDecimal montant) {
-        this.reference = reference;
-        this.etat = etat;
-        this.devise = devise;
-        this.montant = montant;
-    }
 
-    public String getReference() {
-        return reference;
-    }
 
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
-    public String getEtat() {
-        return etat;
-    }
-
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public String getDevise() {
-        return devise;
-    }
-
-    public void setDevise(String devise) {
-        this.devise = devise;
-    }
-
-    public BigDecimal getMontant() {
-        return montant;
-    }
-
-    public void setMontant(BigDecimal montant) {
-        this.montant = montant;
-    }
 }

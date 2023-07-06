@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface CaisseRepository extends JpaRepository<Caisse, Long> {
-    Optional<Caisse> findByreference(@Param("reference") String reference);
+    Caisse findByreference(@Param("reference") String reference);
 }
