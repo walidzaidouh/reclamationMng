@@ -8,7 +8,7 @@ public class CaisseImpl implements Caisse {
 
 
     @Override
-    public Caisse findByRef(String reference,String etat, String devise, BigDecimal montant) {
+    public Caisse findByreference(String reference,String etat, String devise, BigDecimal montant) {
         return null;
     }
 }
