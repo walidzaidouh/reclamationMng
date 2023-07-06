@@ -1,39 +1,41 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.services.Caisse;
-import ma.atos.reclamation.services.Rapprochement;
-import ma.atos.reclamation.services.Transaction;
+import ma.atos.reclamation.dto.CaisseDTO;
+import ma.atos.reclamation.dto.TransactionDTO;
+import ma.atos.reclamation.services.CaisseService;
+import ma.atos.reclamation.services.RapprochementService;
+import ma.atos.reclamation.services.TransactionService;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class RapprochementImpl implements Rapprochement {
+public class RapprochementServiceImpl implements RapprochementService {
 
-    private final Caisse caisse;
+    private final CaisseService caisseService;
 
-    private final Transaction transaction;
+    private final TransactionService transactionService;
 
 
     // Injection par constrcuteur
-    public RapprochementImpl(Caisse caisse, Transaction transaction) {
-        this.caisse = caisse;
-        this.transaction = transaction;
+    public RapprochementServiceImpl(CaisseService caisseService, TransactionService transactionService) {
+        this.caisseService = caisseService;
+        this.transactionService = transactionService;
     }
 
 
     @Override
     public BigDecimal calculEcart(String refCaisse) {
 
-        ma.atos.reclamation.dto.Caisse caisseDto = null;
+        CaisseDTO caisseDto = null;
 
-        List<ma.atos.reclamation.dto.Transaction> transactionList = transaction.transactionList();
+        List<TransactionDTO> transactionDTOList = transactionService.transactionList();
 
 
         BigDecimal tr = BigDecimal.ZERO;
 
-        if(!CollectionUtils.isEmpty(transactionList)){
-            tr = transactionList.stream().map(transaction1 -> transaction1.getMontant()).reduce(BigDecimal.ZERO,BigDecimal::add);
+        if(!CollectionUtils.isEmpty(transactionDTOList)){
+            tr = transactionDTOList.stream().map(transactionDTO1 -> transactionDTO1.getMontant()).reduce(BigDecimal.ZERO,BigDecimal::add);
         }
 
         BigDecimal ecart = BigDecimal.ZERO;

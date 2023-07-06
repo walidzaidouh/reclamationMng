@@ -2,7 +2,7 @@ package ma.atos.reclamation.dto;
 
 import java.math.BigDecimal;
 
-public class Caisse {
+public class CaisseDTO {
     public String getReference() {
         return reference;
     }
@@ -16,7 +16,7 @@ public class Caisse {
     private String devise;
     private BigDecimal montant;
 
-    public Caisse(String reference, String etat, String devise, BigDecimal montant) {
+    public CaisseDTO(String reference, String etat, String devise, BigDecimal montant) {
         this.reference = reference;
         this.etat = etat;
         this.devise = devise;

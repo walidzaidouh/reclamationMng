@@ -2,16 +2,16 @@ package ma.atos.reclamation.dto;
 
 import java.util.List;
 
-public class Client {
+public class ClientDTO {
 
     private String reference;
     private String adresse;
-    private List<Facture> factureList;
+    private List<FactureDTO> factureDTOList;
 
-    public Client(String reference, String adresse, List<Facture> factureList) {
+    public ClientDTO(String reference, String adresse, List<FactureDTO> factureDTOList) {
         this.reference = reference;
         this.adresse = adresse;
-        this.factureList = factureList;
+        this.factureDTOList = factureDTOList;
     }
 
     public String getReference() {
@@ -30,11 +30,11 @@ public class Client {
         this.adresse = adresse;
     }
 
-    public List<Facture> getFactureList() {
-        return factureList;
+    public List<FactureDTO> getFactureList() {
+        return factureDTOList;
     }
 
-    public void setFactureList(List<Facture> factureList) {
-        this.factureList = factureList;
+    public void setFactureList(List<FactureDTO> factureDTOList) {
+        this.factureDTOList = factureDTOList;
     }
 }
