@@ -25,13 +25,9 @@ public class Transaction {
     private LocalDateTime date;
     private boolean isRapprochement;
 
-
     @ManyToOne
     @JoinColumn(name = "facture_id")
     private Facture facture;
 
     @Enumerated(EnumType.STRING)
     private String Type;
-
-
-}
