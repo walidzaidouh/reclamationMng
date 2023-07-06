@@ -2,9 +2,12 @@ package ma.atos.reclamation.dto;
 
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class AgenceDTO {
 
@@ -12,11 +15,4 @@ public class AgenceDTO {
     private String nom;
     private String localisation;
     private DistributeurDTO distributeurDTO;
-
-    public AgenceDTO(String code, String nom, String localisation, DistributeurDTO distributeurDTO) {
-        this.code = code;
-        this.nom = nom;
-        this.localisation = localisation;
-        this.distributeurDTO = distributeurDTO;
-    }
 }

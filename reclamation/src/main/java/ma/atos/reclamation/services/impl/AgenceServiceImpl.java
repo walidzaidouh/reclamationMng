@@ -16,12 +16,8 @@ import java.util.Optional;
 @Service
 public class AgenceServiceImpl implements AgenceService {
 
-    private final AgenceRepository agenceRepository;
-
     @Autowired
-    public AgenceServiceImpl(AgenceRepository agenceRepository) {
-        this.agenceRepository = agenceRepository;
-    }
+    AgenceRepository agenceRepository;
 
     @Override
     public List<AgenceDTO> list() {
@@ -31,7 +27,7 @@ public class AgenceServiceImpl implements AgenceService {
 
         List<AgenceDTO> agenceDTOList = new ArrayList<>();
         if (!CollectionUtils.isEmpty(agenceList)) {
-            agenceList.stream().forEach(agence -> {
+            agenceList.forEach(agence -> {
                 AgenceDTO agenceDTO = new AgenceDTO();
                 BeanUtils.copyProperties(agence, agenceDTO);
                 agenceDTOList.add(agenceDTO);
@@ -42,24 +38,23 @@ public class AgenceServiceImpl implements AgenceService {
     }
 
     @Override
-    public Optional<Agence> getAgenceByCode(String code) {
-        return agenceRepository.findByCode(code);
+    public AgenceDTO getAgenceByCode(String code) {
+
+        Agence agence = agenceRepository.findByCode(code);
+        AgenceDTO agenceDTO = new AgenceDTO();
+
+        BeanUtils.copyProperties(agence, agenceDTO);
+
+        return agenceDTO;
     }
 
     @Override
-    public void addAgence(Agence agence) {
+    public void createAgence(AgenceDTO agenceDTO) {
+
+        Agence agence = new Agence();
+        BeanUtils.copyProperties(agence, agenceDTO);
         agenceRepository.save(agence);
+
     }
 
-    @Override
-    public void updateAgence(Long id, Agence agence) {
-        if (agenceRepository.findById(id).get() != null) {
-            agenceRepository.save(agence);
-        }
-    }
-
-    @Override
-    public void deleteAgence(Long id) {
-    agenceRepository.deleteById(id);
-    }
 }

@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface AgenceRepository extends JpaRepository<Agence, Long> {
 
-    Optional<Agence> findByCode(@Param("code") String code);
+    Agence findByCode(@Param("code") String code);
 }
