@@ -1,6 +1,7 @@
 package ma.atos.reclamation.entites;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,12 +18,11 @@ public class Caisse {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-
+  
     private String reference;
     private String etat;
     private String devise;
     private BigDecimal montant;
-
     @OneToOne
     private Agence agence;
 

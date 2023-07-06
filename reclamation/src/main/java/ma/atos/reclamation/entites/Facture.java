@@ -1,34 +1,26 @@
-package ma.atos.reclamation.dto;
+package ma.atos.reclamation.entites;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 public class Facture {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String reference;
-    private List<Transaction> transactionList;
+   //private List<Transaction> transactionList;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
     private Client client;
     private LocalDateTime dateFacture;
     private LocalDateTime dateEcheance;
     private BigDecimal montant;
 
-    public BigDecimal getMontant() {
-        return montant;
-    }
-
-    public void setMontant(BigDecimal montant) {
-        this.montant = montant;
-    }
-
-    public Facture(String reference, List<Transaction> transactionList, Client client, LocalDateTime dateFacture, LocalDateTime dateEcheance, BigDecimal montant) {
-        this.reference = reference;
-        this.transactionList = transactionList;
-        this.client = client;
-        this.dateFacture = dateFacture;
-        this.dateEcheance = dateEcheance;
-        this.montant = montant;
-    }
 
     public String getRefernce() {
         return reference;
@@ -36,14 +28,6 @@ public class Facture {
 
     public void setRefernce(String refernce) {
         this.reference = refernce;
-    }
-
-    public List<Transaction> getTransactionList() {
-        return transactionList;
-    }
-
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
     }
 
     public Client getClient() {
@@ -68,5 +52,13 @@ public class Facture {
 
     public void setDateEcheance(LocalDateTime dateEcheance) {
         this.dateEcheance = dateEcheance;
+    }
+
+    public BigDecimal getMontant() {
+        return montant;
+    }
+
+    public void setMontant(BigDecimal montant) {
+        this.montant = montant;
     }
 }

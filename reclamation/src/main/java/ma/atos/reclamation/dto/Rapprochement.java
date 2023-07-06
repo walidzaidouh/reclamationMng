@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 public class Rapprochement {
 
 
-
     private String reference;
     private Caisse caisse;
     private LocalDateTime date;
@@ -29,6 +28,7 @@ public class Rapprochement {
     public void setReference(String reference) {
         this.reference = reference;
     }
+
     public Caisse getCaisse() {
         return caisse;
     }
