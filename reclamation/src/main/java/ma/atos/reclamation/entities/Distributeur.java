@@ -1,27 +1,24 @@
-package ma.atos.reclamation.entites;
+package ma.atos.reclamation.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
-public class Agence {
+public class Distributeur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String code;
+    private String refernce;
     private String nom;
-    private String localisation;
 
-    @ManyToOne
-    @JoinColumn(name = "distributeur_id")
-    private Distributeur distributeur;
-
+    @OneToMany(mappedBy = "distributeur")
+    private List<Agence> agences;
 }

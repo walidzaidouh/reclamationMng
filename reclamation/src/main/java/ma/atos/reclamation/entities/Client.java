@@ -1,4 +1,4 @@
-package ma.atos.reclamation.entites;
+package ma.atos.reclamation.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

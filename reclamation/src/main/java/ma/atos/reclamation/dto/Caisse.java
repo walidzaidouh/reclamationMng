@@ -7,9 +7,7 @@ public class Caisse {
         return reference;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
+
 
     private String reference;
     private String etat;
@@ -23,9 +21,7 @@ public class Caisse {
         this.montant = montant;
     }
 
-    public String getReference() {
-        return reference;
-    }
+
 
     public void setReference(String reference) {
         this.reference = reference;

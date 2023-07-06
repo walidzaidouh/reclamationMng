@@ -1,12 +1,14 @@
 package ma.atos.reclamation.services.impl;
 
 import ma.atos.reclamation.services.Agence;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
 public class AgenceImpl implements Agence {
+
 
     @Override
     public List<Agence> getAllAgenceList() {
