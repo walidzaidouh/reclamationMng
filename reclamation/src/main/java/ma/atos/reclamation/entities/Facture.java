@@ -1,9 +1,8 @@
-package ma.atos.reclamation.entites;
+package ma.atos.reclamation.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 public class Facture {
