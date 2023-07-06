@@ -1,14 +1,19 @@
 package ma.atos.reclamation.services.impl;
 
+import ma.atos.reclamation.repositories.RapprochementRepository;
 import ma.atos.reclamation.services.Caisse;
 import ma.atos.reclamation.services.Rapprochement;
 import ma.atos.reclamation.services.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public class RapprochementImpl implements Rapprochement {
+
+    @Autowired
+    RapprochementRepository rapprochementRepository;
 
     private final Caisse caisse;
 
@@ -54,6 +59,11 @@ public class RapprochementImpl implements Rapprochement {
             }
         }
         return ecart;
+    }
+
+    @Override
+    public Rapprochement getRapprochement(String reference) {
+        return null;
     }
 }
 //Transaction transaction1 : transaction = (List<Transaction>) lF.get(i)
