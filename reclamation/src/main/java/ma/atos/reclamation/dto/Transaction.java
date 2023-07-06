@@ -12,11 +12,14 @@ public class Transaction {
     private BigDecimal montant;
     private LocalDateTime date;
 
-    public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date) {
+    private boolean rapprouchement;
+
+    public Transaction(String reference, TypePaiement typePaiement, BigDecimal montant, LocalDateTime date, boolean rapprouchement) {
         this.reference = reference;
         this.typePaiement = typePaiement;
         this.montant = montant;
         this.date = date;
+        this.rapprouchement = rapprouchement;
     }
 
     public String getReference() {
@@ -49,5 +52,13 @@ public class Transaction {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public boolean isRapprouchement() {
+        return rapprouchement;
+    }
+
+    public void setRapprouchement(boolean rapprouchement) {
+        this.rapprouchement = rapprouchement;
     }
 }
