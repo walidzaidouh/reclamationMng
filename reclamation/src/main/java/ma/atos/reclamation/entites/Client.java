@@ -18,8 +18,10 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String reference;
     private String adresse;
+
     @OneToMany(mappedBy = "client")
     private List<Facture> factureList;
 

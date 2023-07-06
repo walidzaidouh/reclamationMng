@@ -1,11 +1,8 @@
 package ma.atos.reclamation.entites;
 
 import lombok.*;
-import ma.atos.reclamation.entites.Client;
-import ma.atos.reclamation.dto.Facture;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter

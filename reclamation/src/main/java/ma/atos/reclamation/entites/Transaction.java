@@ -15,23 +15,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Transaction {
 
-@Id
-
-@GeneratedValue(strategy =  GenerationType.SEQUENCE)
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
     private String reference;
     private TypePaiement typePaiement;
     private BigDecimal montant;
     private LocalDateTime date;
     private boolean isRapprochement;
 
-
     @ManyToOne
     @JoinColumn(name = "facture_id")
     private Facture facture;
+
     @Enumerated(EnumType.STRING)
     private String Type;
-
-
-}
