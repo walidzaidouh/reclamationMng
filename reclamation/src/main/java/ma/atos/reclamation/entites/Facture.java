@@ -30,5 +30,6 @@ public class Facture {
     private LocalDateTime dateFacture;
     private LocalDateTime dateEcheance;
     private BigDecimal montant;
+    private String statut;
 
 }
