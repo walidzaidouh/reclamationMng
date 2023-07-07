@@ -10,9 +10,9 @@ public interface FactureService {
 
     public List<FactureDTO> list();
 
-    Facture getFactureByReference(String reference);
+    FactureDTO getFactureByReference(String reference);
 
-    Facture createFacture(FactureDTO factureDTO);
+    void createFacture(FactureDTO factureDTO);
     //Facture updateFacture(Long id, Facture facture);
    // void deleteFacture(Long id);
 
