@@ -21,7 +21,6 @@ public class Rapprochement {
     private Long id;
 
     private String reference;
-
     @ManyToOne
     @JoinColumn(name = "caisse_id")
     private Caisse caisse;

@@ -22,7 +22,7 @@ public class AgenceServiceImpl implements AgenceService {
     @Override
     public List<AgenceDTO> list() {
 
-        // Return all agenies exist in DT
+        // Return all agenies exist in DB
         List<Agence> agenceList =  agenceRepository.findAll();
 
         List<AgenceDTO> agenceDTOList = new ArrayList<>();

@@ -1,19 +1,20 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.dto.CaisseDTO;
-import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Caisse;
 import ma.atos.reclamation.repositories.CaisseRepository;
 import ma.atos.reclamation.services.CaisseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class CaisseServiceImpl implements CaisseService {
 
     @Autowired
@@ -31,5 +32,23 @@ public class CaisseServiceImpl implements CaisseService {
             });
         }
         return caisseDTOList;
+    }
+
+    @Override
+    public CaisseDTO getByreference(String reference) {
+
+        CaisseDTO caisseDTO = new CaisseDTO();
+        Caisse caisse = caisseRepository.findByReference(reference);
+        BeanUtils.copyProperties(caisse, caisseDTO);
+        return  caisseDTO;
+    }
+
+
+    @Override
+    public  void ajouterCaisse (CaisseDTO caisseDTO){
+        Caisse caissse = new Caisse();
+        BeanUtils.copyProperties(caisseDTO, caissse );
+        caisseRepository.save(caissse);
+
     }
 }
