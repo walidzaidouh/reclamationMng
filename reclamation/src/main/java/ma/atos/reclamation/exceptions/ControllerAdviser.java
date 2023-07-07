@@ -8,9 +8,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.persistence.EntityNotFoundException;
 
-@ControllerAdvice
-public class ControllerAdviser extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(Exception.class)
+//@ControllerAdvice
+public class ControllerAdviser {
+   // @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleNotFoundEntite(Exception e){
         System.out.println("test");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

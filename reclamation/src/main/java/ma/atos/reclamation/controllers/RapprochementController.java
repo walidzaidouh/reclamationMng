@@ -35,11 +35,13 @@ public class RapprochementController {
     @GetMapping("/get/{reference}")
     public ResponseEntity<?> getRapprochementByReference(@PathVariable String reference) {
 
-        RapprochementDTO rapprochement = null;
+        RapprochementDTO rapprochement = new RapprochementDTO();
         try {
             rapprochement = rapprochementService.getRapprochementByReference(reference);
         } catch (Exception e) {
-            //ResponseEntity.status(HttpStatus.BAD_REQUEST).body(rapprochement);
+            rapprochement.setCode("001");
+            rapprochement.setMessage(e.getMessage());
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(rapprochement);
         }
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(rapprochement);
     }

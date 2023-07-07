@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Setter
 @Getter
-public class RapprochementDTO {
+public class RapprochementDTO extends GenericResponseDTO {
 
 
     private String reference;

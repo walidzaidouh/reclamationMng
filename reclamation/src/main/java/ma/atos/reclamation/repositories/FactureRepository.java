@@ -14,14 +14,4 @@ import java.util.List;
 public interface FactureRepository extends JpaRepository<Facture, Long> {
 
     Facture findByReference(String reference);
-
-    // List<Facture> findAll();
-
-    //afficher les transactions effectuées par la facture
-    List<Transaction> findAllByFacture(Facture facture);
-
-  /*  @Modifying
-    @Query("UPDATE Facture f SET f.statut = 'payée' WHERE f.id = :id")
-    void payerFacture(@Param("id") Long id);
-   */
 }
