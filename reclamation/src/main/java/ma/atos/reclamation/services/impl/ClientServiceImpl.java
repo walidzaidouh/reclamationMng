@@ -1,8 +1,6 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.dto.ClientDTO;
-import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.B2B;
 import ma.atos.reclamation.entites.B2C;
 import ma.atos.reclamation.entites.Client;
@@ -16,7 +14,6 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -52,7 +49,8 @@ public class ClientServiceImpl implements ClientService {
         return clientDTO;
     }
 
-    public void add(ClientDTO clientDTO) {
+    @Override
+    public void createClient(ClientDTO clientDTO) {
 
         if (clientDTO.getType().equals(TypeClient.B2B)) {
             B2B b2b = new B2B();

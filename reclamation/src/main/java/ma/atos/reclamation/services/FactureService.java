@@ -12,10 +12,9 @@ public interface FactureService {
 
     FactureDTO getFactureByReference(String reference);
 
-    void createFacture(FactureDTO factureDTO);
-    //Facture updateFacture(Long id, Facture facture);
-   // void deleteFacture(Long id);
+    /* void createFacture(FactureDTO factureDTO);
 
-    // Méthode pour effectuer le paiement d'une facture
     void payerFacture(String reference);
+
+     */
 }

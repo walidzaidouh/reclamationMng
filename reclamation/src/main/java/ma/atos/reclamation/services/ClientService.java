@@ -11,4 +11,6 @@ public interface ClientService {
     public List<ClientDTO> list();
 
     public ClientDTO getClientByReference(String reference);
+
+    void createClient(ClientDTO clientDTO);
 }

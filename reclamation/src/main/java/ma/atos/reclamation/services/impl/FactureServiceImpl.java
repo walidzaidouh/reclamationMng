@@ -36,12 +36,15 @@ public class FactureServiceImpl implements FactureService {
         return factureDTOList;
     }
 
+    /*
     @Override
     public void createFacture(FactureDTO factureDTO) {
         Facture facture = new Facture();
         BeanUtils.copyProperties(factureDTO, facture);
         factureRepository.save(facture);
     }
+    *
+     */
 
     @Override
     public FactureDTO getFactureByReference(String reference) {
@@ -52,7 +55,7 @@ public class FactureServiceImpl implements FactureService {
 
     }
 
-
+/*
     @Override
     public void payerFacture(String reference) {
         Facture factureDTO = factureRepository.findByReference(reference);
@@ -65,4 +68,6 @@ public class FactureServiceImpl implements FactureService {
             System.out.println("La facture avec la référence " + reference + " n'a pas été trouvée.");
         }
     }
+    *
+ */
 }
