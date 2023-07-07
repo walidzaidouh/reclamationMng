@@ -23,12 +23,9 @@ public class Transaction {
     private BigDecimal montant;
     private LocalDateTime date;
     private boolean isRapprochement;
-
     @ManyToOne
     @JoinColumn(name = "facture_id")
-
     private Facture facture;
-
     @Enumerated(EnumType.STRING)
     private String Type;
 }
