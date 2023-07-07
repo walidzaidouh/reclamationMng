@@ -7,14 +7,14 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
 @NoArgsConstructor
+@Setter
+@Getter
 public class RapprochementDTO {
 
 
     private String reference;
-    private CaisseDTO caisseDTO;
+    private CaisseDTO caisse;
     private LocalDateTime date;
     private boolean ecart;
 
