@@ -2,6 +2,7 @@ package ma.atos.reclamation.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ma.atos.reclamation.dto.CaisseDTO;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Rapprochement {
 
