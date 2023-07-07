@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,9 @@ public class RapprochementServiceImpl implements RapprochementService {
     @Override
     public RapprochementDTO getRapprochementByReference(String reference) {
         Rapprochement rapprochement = rapprochementRepository.findByReference(reference);
+        if(rapprochement==null){
+            throw new EntityNotFoundException("Aucun rapprochement trouvé !");
+        }
         RapprochementDTO rapprochementDTO = new RapprochementDTO();
 
         BeanUtils.copyProperties(rapprochement, rapprochementDTO);
