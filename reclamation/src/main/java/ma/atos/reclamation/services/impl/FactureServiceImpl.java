@@ -2,7 +2,6 @@ package ma.atos.reclamation.services.impl;
 
 
 import ma.atos.reclamation.dto.FactureDTO;
-import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Facture;
 import ma.atos.reclamation.repositories.FactureRepository;
 import ma.atos.reclamation.services.FactureService;
@@ -53,6 +52,7 @@ public class FactureServiceImpl implements FactureService {
 
     }
 
+
     @Override
     public void payerFacture(String reference) {
         Facture factureDTO = factureRepository.findByReference(reference);
@@ -62,7 +62,7 @@ public class FactureServiceImpl implements FactureService {
             factureRepository.save(factureDTO);
             System.out.println("Facture payée avec succès !");
         } else {
-            System.out.println("La facture avec la référence " + reference + " n'est pas été trouvée.");
+            System.out.println("La facture avec la référence " + reference + " n'a pas été trouvée.");
         }
     }
 }

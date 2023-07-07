@@ -10,46 +10,38 @@ import java.util.List;
 @RestController
 @RequestMapping("/factures")
 public class FactureController {
-
     @Autowired
-    FactureService factureService;
+    private  FactureService factureService;
+
+    @GetMapping("/{reference}")
+    public FactureDTO getFactureByReference(@PathVariable("reference") String reference) {
+        return factureService.getFactureByReference(reference);
+    }
 
     @GetMapping("/list")
-    public List<FactureDTO> factureDTOList() {
-
-        List<FactureDTO> factureList = null;
-
-        try {
-            factureList = factureService.list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return factureList;
+    public List<FactureDTO> getAllFactures() {
+        return factureService.list();
     }
 
-    @GetMapping("/get/{reference}")
-    public FactureDTO facture(String reference) {
-
-        FactureDTO facture = null;
-
-        try {
-            facture = factureService.getFactureByReference(reference);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return facture;
-
-    }
     @PostMapping("/add")
-    public String addFacture(@RequestBody FactureDTO factureDTO){
-        factureService.createFacture(factureDTO);
-        return "Facture bien ajoutée! ";
+    public String createFacture(@RequestBody FactureDTO factureDTO) {
+         factureService.createFacture(factureDTO);
+        return "Done !";
     }
+
+/*    @PutMapping("/{id}")
+    public Facture updateFacture(@PathVariable("id") Long id, @RequestBody Facture facture) {
+        return factureService.updateFacture(id, facture);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteFacture(@PathVariable("id") Long id) {
+        factureService.deleteFacture(id);
+    }*/
 
     @PostMapping("/{reference}/payer")
-    public String payerFacture(@PathVariable("reference") String reference) {
+    public void payerFacture(@PathVariable("reference") String reference) {
         factureService.payerFacture(reference);
-        return "Facture bien payée";
     }
+
 }
