@@ -25,7 +25,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Optional<Client> getClientByReference(String reference) {
-        return clientRepository.getClientByReference(reference);
+        return clientRepository.findByReference(reference);
     }
 
     @Override
@@ -44,4 +44,5 @@ public class ClientServiceImpl implements ClientService {
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
     }
+
 }

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
 public class Rapprochement {
 
@@ -22,7 +21,7 @@ public class Rapprochement {
     private String reference;
     @ManyToOne
     @JoinColumn(name = "caisse_id")
-    private CaisseDTO caisseDTO;
+    private Caisse caisse;
     private LocalDateTime date;
     private boolean ecart;
     private BigDecimal montantEcart;

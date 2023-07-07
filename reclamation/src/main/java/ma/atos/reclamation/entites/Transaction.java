@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 public class Transaction {
 
     @Id
@@ -20,6 +19,7 @@ public class Transaction {
     private long id;
 
     private String reference;
+    @Enumerated(EnumType.STRING)
     private TypePaiement typePaiement;
     private BigDecimal montant;
     private LocalDateTime date;
@@ -29,5 +29,5 @@ public class Transaction {
     @JoinColumn(name = "facture_id")
     private Facture facture;
 
-    @Enumerated(EnumType.STRING)
-    private String Type;
+
+}

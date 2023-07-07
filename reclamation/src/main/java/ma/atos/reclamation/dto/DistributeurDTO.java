@@ -5,11 +5,6 @@ public class DistributeurDTO {
     private String refernce;
     private String nom;
 
-    public DistributeurDTO(String refernce, String nom) {
-        this.refernce = refernce;
-        this.nom = nom;
-    }
-
     public String getRefernce() {
         return refernce;
     }

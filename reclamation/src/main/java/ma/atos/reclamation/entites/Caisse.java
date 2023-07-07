@@ -13,7 +13,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
 public class Caisse {
 
@@ -29,7 +28,7 @@ public class Caisse {
     @OneToOne
     private Agence agence;
 
-    @OneToMany(mappedBy = "Caisse")
+    @OneToMany(mappedBy = "caisse")
     private List<Rapprochement> rapprochement;
 
 }

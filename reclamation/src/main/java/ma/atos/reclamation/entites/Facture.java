@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
 public class Facture {
 
