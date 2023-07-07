@@ -4,6 +4,8 @@ import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.dto.RapprochementDTO;
 import ma.atos.reclamation.services.RapprochementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,15 +33,15 @@ public class RapprochementController {
     }
 
     @GetMapping("/get/{reference}")
-    public RapprochementDTO getRapprochementByReference(@PathVariable String reference) {
+    public ResponseEntity<?> getRapprochementByReference(@PathVariable String reference) {
 
         RapprochementDTO rapprochement = null;
         try {
             rapprochement = rapprochementService.getRapprochementByReference(reference);
         } catch (Exception e) {
-            e.printStackTrace();
+            //ResponseEntity.status(HttpStatus.BAD_REQUEST).body(rapprochement);
         }
-        return rapprochement;
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(rapprochement);
     }
     @GetMapping("/calculEcart")
     public BigDecimal calculEcart(String reference){
