@@ -38,7 +38,7 @@ public class CaisseServiceImpl implements CaisseService {
     public CaisseDTO getByreference(String reference) {
 
         CaisseDTO caisseDTO = new CaisseDTO();
-        Caisse caisse = caisseRepository.findByreference(reference);
+        Caisse caisse = caisseRepository.findByReference(reference);
         BeanUtils.copyProperties(caisse, caisseDTO);
         return  caisseDTO;
     }
@@ -49,5 +49,6 @@ public class CaisseServiceImpl implements CaisseService {
         Caisse caissse = new Caisse();
         BeanUtils.copyProperties(caisseDTO, caissse );
         caisseRepository.save(caissse);
+
     }
 }

@@ -12,7 +12,7 @@ public interface CaisseService {
     public List<CaisseDTO> list();
 
     public CaisseDTO getByreference(String reference);
-     public Caisse ajouterCaisse(CaisseDTO caisseDTO);
+     public void ajouterCaisse(CaisseDTO caisseDTO);
 
 
 }

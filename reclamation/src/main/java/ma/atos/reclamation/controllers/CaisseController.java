@@ -29,8 +29,8 @@ public class CaisseController {
         }
         return caisselist;
     }
-    @GetMapping("/byreference")
-    public  CaisseDTO getByreference(String reference) {
+    @GetMapping("/get/{reference}")
+    public  CaisseDTO getByreference(@PathVariable(name = "reference") String reference) {
         CaisseDTO caisse = null;
         try{
             caisse=caisseService.getByreference(reference);
@@ -40,7 +40,7 @@ public class CaisseController {
         }
 
 
-        return null;
+        return caisse;
     }
     @PostMapping("/add")
     public String ajouterCaisse (@RequestBody CaisseDTO caisseDTO){
