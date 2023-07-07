@@ -1,28 +1,34 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.services.Caisse;
-import ma.atos.reclamation.services.Rapprochement;
+import ma.atos.reclamation.dto.RapprochementDTO;
+import ma.atos.reclamation.entites.Rapprochement;
+import ma.atos.reclamation.repositories.RapprochementRepository;
+import ma.atos.reclamation.services.RapprochementService;
 import ma.atos.reclamation.services.Transaction;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
-public class RapprochementImpl implements Rapprochement {
+@Service
+public class RapprochementImpl implements RapprochementService {
 
-    private final Caisse caisse;
+    //private final Caisse caisse;
 
-    private final Transaction transaction;
+    @Autowired
+    private RapprochementRepository rapprochementRepository;
+    //private final Transaction transaction;
 
 
     // Injection par constrcuteur
-    public RapprochementImpl(Caisse caisse, Transaction transaction) {
-        this.caisse = caisse;
-        this.transaction = transaction;
-    }
 
 
-    @Override
+
+    /*@Override
     public BigDecimal calculEcart(String refCaisse) {
 
         ma.atos.reclamation.dto.Caisse caisseDto = null;
@@ -39,8 +45,6 @@ public class RapprochementImpl implements Rapprochement {
         BigDecimal ecart = BigDecimal.ZERO;
 
 
-
-
         if (caisseDto.getMontant() != null && tr != null) {
             if (tr.compareTo(caisseDto.getMontant()) > 0) {
                 ecart = tr.subtract(caisseDto.getMontant());
@@ -54,6 +58,27 @@ public class RapprochementImpl implements Rapprochement {
             }
         }
         return ecart;
+    }*/
+
+    @Override
+    public BigDecimal calculEcart(String refCaisse) {
+        return null;
+    }
+
+    @Override
+    public List<RapprochementDTO> listRapprochement() {
+        List<Rapprochement> rapprochementList =  rapprochementRepository.findAll();
+
+        List<RapprochementDTO> rapprochementDTOList = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(rapprochementList)) {
+            rapprochementList.stream().forEach(rapprochement -> {
+                RapprochementDTO rapprochementDTO = new RapprochementDTO();
+                BeanUtils.copyProperties(rapprochement, rapprochementDTO);
+                rapprochementDTOList.add(rapprochementDTO);
+            });
+        }
+
+        return rapprochementDTOList;
     }
 }
 //Transaction transaction1 : transaction = (List<Transaction>) lF.get(i)
