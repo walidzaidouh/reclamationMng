@@ -2,6 +2,7 @@ package ma.atos.reclamation.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ma.atos.reclamation.dto.CaisseDTO;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Rapprochement {
 
@@ -19,6 +21,7 @@ public class Rapprochement {
     private Long id;
 
     private String reference;
+
     @ManyToOne
     @JoinColumn(name = "caisse_id")
     private Caisse caisse;

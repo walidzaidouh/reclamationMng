@@ -9,6 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @Entity
 public class Distributeur {
 
