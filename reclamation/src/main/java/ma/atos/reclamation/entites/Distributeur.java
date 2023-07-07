@@ -1,6 +1,5 @@
 package ma.atos.reclamation.entites;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,7 @@ public class Distributeur {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String refernce;
+    private String reference;
     private String nom;
 
     @OneToMany(mappedBy = "distributeur")

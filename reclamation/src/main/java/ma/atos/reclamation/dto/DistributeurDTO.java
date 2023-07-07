@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DistributeurDTO {
 
-    private String refernce;
+    private String reference;
     private String nom;
 
 }
