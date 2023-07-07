@@ -14,7 +14,7 @@ public class RapprochementDTO {
 
 
     private String reference;
-    private Caisse caisse;
+    private CaisseDTO caisse;
     private LocalDateTime date;
     private boolean ecart;
 

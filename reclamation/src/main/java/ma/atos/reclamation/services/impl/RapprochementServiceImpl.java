@@ -1,10 +1,14 @@
 package ma.atos.reclamation.services.impl;
 
+import ma.atos.reclamation.dto.AgenceDTO;
+import ma.atos.reclamation.dto.CaisseDTO;
 import ma.atos.reclamation.dto.RapprochementDTO;
+import ma.atos.reclamation.dto.TransactionDTO;
+import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Rapprochement;
 import ma.atos.reclamation.repositories.RapprochementRepository;
 import ma.atos.reclamation.services.RapprochementService;
-import ma.atos.reclamation.services.Transaction;
+import ma.atos.reclamation.services.TransactionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,25 +19,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RapprochementImpl implements RapprochementService {
+public class RapprochementServiceImpl implements RapprochementService {
 
     //private final Caisse caisse;
 
     @Autowired
     private RapprochementRepository rapprochementRepository;
-    //private final Transaction transaction;
+    @Autowired
+    private TransactionService transaction;
 
 
     // Injection par constrcuteur
 
 
 
-    /*@Override
+    @Override
     public BigDecimal calculEcart(String refCaisse) {
 
-        ma.atos.reclamation.dto.Caisse caisseDto = null;
+        CaisseDTO caisseDto = null;
 
-        List<ma.atos.reclamation.dto.Transaction> transactionList = transaction.transactionList();
+        List<TransactionDTO> transactionList = transaction.transactionList();
 
 
         BigDecimal tr = BigDecimal.ZERO;
@@ -58,11 +63,6 @@ public class RapprochementImpl implements RapprochementService {
             }
         }
         return ecart;
-    }*/
-
-    @Override
-    public BigDecimal calculEcart(String refCaisse) {
-        return null;
     }
 
     @Override
@@ -79,6 +79,16 @@ public class RapprochementImpl implements RapprochementService {
         }
 
         return rapprochementDTOList;
+    }
+
+    @Override
+    public RapprochementDTO getRapprochementByReference(String reference) {
+        Rapprochement rapprochement = rapprochementRepository.findByReference(reference);
+        RapprochementDTO rapprochementDTO = new RapprochementDTO();
+
+        BeanUtils.copyProperties(rapprochement, rapprochementDTO);
+
+        return rapprochementDTO;
     }
 }
 //Transaction transaction1 : transaction = (List<Transaction>) lF.get(i)

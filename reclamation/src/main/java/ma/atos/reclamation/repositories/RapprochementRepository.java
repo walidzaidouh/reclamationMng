@@ -1,5 +1,6 @@
 package ma.atos.reclamation.repositories;
 
+import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Rapprochement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
