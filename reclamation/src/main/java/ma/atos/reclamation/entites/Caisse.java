@@ -27,6 +27,7 @@ public class Caisse {
     private String devise;
     private BigDecimal montant;
 
+
     @OneToOne
     private Agence agence;
 
