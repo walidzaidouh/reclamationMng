@@ -1,10 +1,10 @@
 package ma.atos.reclamation.entites;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import ma.atos.reclamation.enums.TypePaiement;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -27,6 +27,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "facture_id")
+
     private Facture facture;
 
     @Enumerated(EnumType.STRING)
