@@ -1,20 +1,14 @@
 package ma.atos.reclamation.services;
 
-import ma.atos.reclamation.entites.Client;
+import ma.atos.reclamation.dto.AgenceDTO;
+import ma.atos.reclamation.dto.ClientDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ClientService {
 
-    public List<Client> getAllClients();
+    public List<ClientDTO> list();
 
-    public Optional<Client> getClientByReference(String reference);
-
-    public void addClient(Client client);
-
-    public void updateClient(Long id, Client client);
-
-    public void deleteClient(Long id);
-
+    public ClientDTO getClientByReference(String reference);
 }

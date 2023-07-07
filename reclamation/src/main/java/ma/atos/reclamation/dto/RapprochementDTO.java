@@ -1,8 +1,15 @@
 package ma.atos.reclamation.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class RapprochementDTO {
 
 
@@ -13,51 +20,4 @@ public class RapprochementDTO {
 
     private BigDecimal montantEcart;
 
-    public RapprochementDTO(String reference, CaisseDTO caisseDTO, LocalDateTime date, boolean ecart, BigDecimal montantEcart) {
-        this.reference = reference;
-        this.caisseDTO = caisseDTO;
-        this.date = date;
-        this.ecart = ecart;
-        this.montantEcart = montantEcart;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public CaisseDTO getCaisse() {
-        return caisseDTO;
-    }
-
-    public void setCaisse(CaisseDTO caisseDTO) {
-        this.caisseDTO = caisseDTO;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-    public boolean isEcart() {
-        return ecart;
-    }
-
-
-    public void setEcart(boolean ecart) {
-        this.ecart = ecart;
-    }
-
-    public BigDecimal getMontantEcart() {
-        return montantEcart;
-    }
-
-    public void setMontantEcart(BigDecimal montantEcart) {
-        this.montantEcart = montantEcart;
-    }
 }
