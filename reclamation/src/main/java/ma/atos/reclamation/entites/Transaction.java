@@ -3,7 +3,6 @@ package ma.atos.reclamation.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ma.atos.reclamation.enums.TypePaiement;
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class Transaction {
 
     @Id
@@ -21,10 +20,7 @@ public class Transaction {
     private long id;
 
     private String reference;
-
-    @Enumerated(EnumType.STRING)
     private TypePaiement typePaiement;
-
     private BigDecimal montant;
     private LocalDateTime date;
     private boolean isRapprochement;
@@ -33,5 +29,6 @@ public class Transaction {
     @JoinColumn(name = "facture_id")
     private Facture facture;
 
-
+    @Enumerated(EnumType.STRING)
+    private String Type;
 }
