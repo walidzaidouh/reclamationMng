@@ -27,10 +27,11 @@ public class Caisse {
     private String devise;
     private BigDecimal montant;
 
+
     @OneToOne
     private Agence agence;
 
-    @OneToMany(mappedBy = "Caisse")
+    @OneToMany(mappedBy = "caisse")
     private List<Rapprochement> rapprochement;
 
 }
