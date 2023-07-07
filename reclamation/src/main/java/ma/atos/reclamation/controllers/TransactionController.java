@@ -3,14 +3,18 @@ package ma.atos.reclamation.controllers;
 import ma.atos.reclamation.dto.TransactionDTO;
 import ma.atos.reclamation.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
-    @RestController
+@RestController
     @RequestMapping("/transaction")
     public class TransactionController {
 
+        @Autowired
+        MessageSource messageSource;
         @Autowired
         private TransactionService transactionService;
 
@@ -40,12 +44,12 @@ import java.util.List;
         @PostMapping("/update")
         public String updateTransaction(@RequestBody TransactionDTO transactionDTO) throws Exception {
             transactionService.updateTransaction(transactionDTO);
-            return "done !";
+            return messageSource.getMessage("transaction.update.msg.succes",new Object[]{transactionDTO.getReference()},Locale.FRENCH);
         }
         @PostMapping("/ajout")
         public String ajoutTransation(@RequestBody TransactionDTO transactionDTO){
             transactionService.ajoutTransaction(transactionDTO);
-            return "done !";
+            return messageSource.getMessage( "transaction.add.msg.succes",new Object[]{transactionDTO.getReference()},Locale.FRENCH);
         }
 
 

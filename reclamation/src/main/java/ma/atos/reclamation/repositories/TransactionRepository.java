@@ -6,4 +6,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     Transaction findTransactionByReference(@Param("reference") String reference);
+
 }
