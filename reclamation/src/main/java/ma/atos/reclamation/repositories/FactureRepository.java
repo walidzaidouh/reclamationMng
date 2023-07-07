@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FactureRepository extends JpaRepository {
+public interface FactureRepository extends JpaRepository<Facture, Long> {
 
     List<Facture> findAll();
 
