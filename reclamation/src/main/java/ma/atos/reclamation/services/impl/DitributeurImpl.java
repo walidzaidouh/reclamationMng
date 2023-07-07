@@ -23,7 +23,7 @@ public class DitributeurImpl implements DistributeurService {
         List<Distributeur> distributeurList = distributeurRepository.findAll();
         List<DistributeurDTO> distributeurDTOList= new ArrayList<>();
         if (!CollectionUtils.isEmpty(distributeurList)){
-            distributeurList.stream().forEach(distributeur -> {
+            distributeurList.forEach(distributeur -> {
                 DistributeurDTO distributeurDTO = new DistributeurDTO();
                 BeanUtils.copyProperties(distributeur, distributeurDTO);
                 distributeurDTOList.add(distributeurDTO);
@@ -35,14 +35,28 @@ public class DitributeurImpl implements DistributeurService {
 
 
 
-
-
-
-
-
     @Override
     public DistributeurDTO updateDistributeur(DistributeurDTO distributeurDTO) {
         return null;
+    }
+
+    @Override
+    public void createDistributeur(DistributeurDTO distributeurDTO) {
+        Distributeur distributeur = new Distributeur();
+        BeanUtils.copyProperties(distributeurDTO, distributeur);
+        distributeurRepository.save(distributeur);
+    }
+
+    @Override
+    public DistributeurDTO findByReference(String reference) {
+
+        Distributeur distributeur = distributeurRepository.findByReference(reference);
+
+        DistributeurDTO distributeurDTO = new DistributeurDTO();
+
+        BeanUtils.copyProperties(distributeur,distributeurDTO);
+
+        return distributeurDTO;
     }
 
 

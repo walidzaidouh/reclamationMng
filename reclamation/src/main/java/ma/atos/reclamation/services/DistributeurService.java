@@ -8,4 +8,8 @@ public interface DistributeurService {
     List<DistributeurDTO> list();
 
     DistributeurDTO updateDistributeur(DistributeurDTO distributeurDTO);
+
+    void createDistributeur(DistributeurDTO distributeurDTO);
+
+    DistributeurDTO findByReference(String reference);
 }
