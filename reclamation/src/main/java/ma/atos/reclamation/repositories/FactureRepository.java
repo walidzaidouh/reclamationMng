@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FactureRepository extends JpaRepository {
+public interface FactureRepository extends JpaRepository<Facture, Long> {
 
     Facture findByReference(String reference);
 
@@ -19,6 +19,7 @@ public interface FactureRepository extends JpaRepository {
 
     //afficher les transactions effectuées par la facture
     List<Transaction> findAllByFacture(Facture facture);
+
   /*  @Modifying
     @Query("UPDATE Facture f SET f.statut = 'payée' WHERE f.id = :id")
     void payerFacture(@Param("id") Long id);
