@@ -11,4 +11,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("select t from Transaction t where t.facture.reference=:refFacture")
     List<Transaction> findTransactionsByFacture(@Param("refFacture") String refFacture);
     Transaction findTransactionByReference(@Param("reference") String reference);
+
 }
