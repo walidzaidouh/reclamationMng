@@ -2,21 +2,47 @@ package ma.atos.reclamation.dto;
 
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
+
 public class AgenceDTO {
 
     private String code;
     private String nom;
     private String localisation;
-    private Distributeur distributeur;
+    private DistributeurDTO distributeurDTO;
 
-    public AgenceDTO(String code, String nom, String localisation, Distributeur distributeur) {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(String localisation) {
         this.localisation = localisation;
-        this.distributeur = distributeur;
+    }
+
+    public DistributeurDTO getDistributeurDTO() {
+        return distributeurDTO;
+    }
+
+    public void setDistributeurDTO(DistributeurDTO distributeurDTO) {
+        this.distributeurDTO = distributeurDTO;
     }
 }

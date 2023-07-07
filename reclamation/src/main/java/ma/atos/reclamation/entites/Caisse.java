@@ -2,6 +2,7 @@ package ma.atos.reclamation.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Caisse {
 
@@ -29,7 +30,7 @@ public class Caisse {
     @OneToOne
     private Agence agence;
 
-    @OneToMany(mappedBy = "Caisse")
+    @OneToMany(mappedBy = "caisse")
     private List<Rapprochement> rapprochement;
 
 }

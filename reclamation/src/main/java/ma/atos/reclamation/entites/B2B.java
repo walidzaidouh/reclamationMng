@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @DiscriminatorValue("B2B")
 public class B2B extends Client {
