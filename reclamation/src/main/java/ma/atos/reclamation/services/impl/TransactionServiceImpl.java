@@ -1,6 +1,7 @@
 package ma.atos.reclamation.services.impl;
 
 import ma.atos.reclamation.dto.TransactionDTO;
+import ma.atos.reclamation.entites.Transaction;
 import ma.atos.reclamation.repositories.TransactionRepository;
 import ma.atos.reclamation.services.TransactionService;
 import org.springframework.beans.BeanUtils;
