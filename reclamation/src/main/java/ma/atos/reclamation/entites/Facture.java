@@ -20,6 +20,7 @@ public class Facture {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String reference;
+
     @OneToMany(mappedBy = "facture", cascade = CascadeType.ALL)
     private List<Transaction> transactionList;
 

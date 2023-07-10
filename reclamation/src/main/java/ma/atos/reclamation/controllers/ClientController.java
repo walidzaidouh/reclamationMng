@@ -3,18 +3,22 @@ package ma.atos.reclamation.controllers;
 import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @Controller
-@RequestMapping("client")
+@RequestMapping("/client")
 public class ClientController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    MessageSource messageSource;
 
     @GetMapping("/list")
     public List<ClientDTO> clientDTOList() {
@@ -31,7 +35,7 @@ public class ClientController {
     }
 
     @GetMapping("/get/{code}")
-    public ClientDTO client(String reference) {
+    public ClientDTO client(@PathVariable String reference) {
 
         ClientDTO client = null;
 
@@ -41,5 +45,11 @@ public class ClientController {
             e.printStackTrace();
         }
         return client;
+    }
+
+    @PostMapping("/add")
+    public String addClient(@RequestBody ClientDTO clientDTO){
+        clientService.createClient(clientDTO);
+        return messageSource.getMessage("client.add.msg.succes", new Object[] {clientDTO.getReference()}, Locale.FRENCH);
     }
 }

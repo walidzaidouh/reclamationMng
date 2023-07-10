@@ -13,7 +13,7 @@ public class FactureController {
     @Autowired
     private  FactureService factureService;
 
-    @GetMapping("/{reference}")
+    @GetMapping("/get/{reference}")
     public FactureDTO getFactureByReference(@PathVariable("reference") String reference) {
         return factureService.getFactureByReference(reference);
     }
@@ -23,11 +23,14 @@ public class FactureController {
         return factureService.list();
     }
 
+    /*
     @PostMapping("/add")
     public String createFacture(@RequestBody FactureDTO factureDTO) {
          factureService.createFacture(factureDTO);
         return "Done !";
     }
+    *
+     */
 
 /*    @PutMapping("/{id}")
     public Facture updateFacture(@PathVariable("id") Long id, @RequestBody Facture facture) {
@@ -39,9 +42,12 @@ public class FactureController {
         factureService.deleteFacture(id);
     }*/
 
+    /*
     @PostMapping("/{reference}/payer")
     public void payerFacture(@PathVariable("reference") String reference) {
         factureService.payerFacture(reference);
     }
 
+*
+     */
 }

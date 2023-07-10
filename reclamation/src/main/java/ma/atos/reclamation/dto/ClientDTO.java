@@ -14,7 +14,7 @@ public class ClientDTO {
 
     private String reference;
     private String adresse;
-    private TypeClient type;
+    private TypeClient typeClient;
     private List<FactureDTO> factureDTOList;
 
 

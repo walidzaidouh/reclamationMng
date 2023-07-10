@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    Client getClientByReference(@Param("reference") String reference);
+    Client findByReference(@Param("reference") String reference);
 }

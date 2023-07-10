@@ -22,6 +22,9 @@ public class Client {
     private String reference;
     private String adresse;
 
+    @ManyToOne
+    private Agence agence;
+
     @OneToMany(mappedBy = "client")
     private List<Facture> factureList;
 
