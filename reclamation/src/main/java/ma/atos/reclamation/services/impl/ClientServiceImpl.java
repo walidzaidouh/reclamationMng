@@ -1,6 +1,5 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.dto.B2BDTO;
 import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.entites.B2B;
 import ma.atos.reclamation.entites.B2C;
@@ -10,11 +9,13 @@ import ma.atos.reclamation.repositories.ClientRepository;
 import ma.atos.reclamation.services.ClientService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,8 +26,6 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     RestTemplate restTemplate;
-
-
 
     @Override
     public List<ClientDTO> list() {
@@ -71,5 +70,17 @@ public class ClientServiceImpl implements ClientService {
 
         }
 
+    }
+
+    @Override
+    public List<ClientDTO> getClientByAgence(String codeAgence) {
+
+        String agenceUrl = "http://localhost:8080/agence/get/{code}";
+
+        ResponseEntity<ClientDTO> response = restTemplate.getForEntity(agenceUrl, ClientDTO.class, codeAgence);
+
+        List<ClientDTO> clients = Arrays.asList(response.getBody());
+
+        return clients;
     }
 }

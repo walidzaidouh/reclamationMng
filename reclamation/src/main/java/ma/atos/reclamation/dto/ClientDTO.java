@@ -10,11 +10,12 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClientDTO {
+public class ClientDTO{
 
     private String reference;
     private String adresse;
     private TypeClient typeClient;
+    private AgenceDTO agence;
     private List<FactureDTO> factureDTOList;
 
 

@@ -12,4 +12,6 @@ public interface ClientService {
     ClientDTO getClientByReference(String reference);
 
     void createClient(ClientDTO clientDTO);
+
+    List<ClientDTO> getClientByAgence(String codeAgence);
 }
