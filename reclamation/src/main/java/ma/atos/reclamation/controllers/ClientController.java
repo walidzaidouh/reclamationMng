@@ -4,6 +4,7 @@ import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class ClientController {
     MessageSource messageSource;
 
     @GetMapping("/list")
-    public List<ClientDTO> clientDTOList() {
+    public ResponseEntity<List<ClientDTO>> clientDTOList() {
 
         List<ClientDTO> clientList = null;
 
@@ -31,25 +32,27 @@ public class ClientController {
             e.printStackTrace();
         }
 
-        return clientList;
+        return ResponseEntity.ok().body(clientList);
     }
 
     @GetMapping("/get/{code}")
-    public ClientDTO client(@PathVariable String reference) {
+    public ResponseEntity<ClientDTO> client(@PathVariable String reference) {
 
         ClientDTO client = null;
 
         try {
             client = clientService.getClientByReference(reference);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return client;
+        return ResponseEntity.ok().body(client);
     }
 
     @PostMapping("/add")
-    public String addClient(@RequestBody ClientDTO clientDTO){
+    public ResponseEntity<?> addClient(@RequestBody ClientDTO clientDTO){
         clientService.createClient(clientDTO);
-        return messageSource.getMessage("client.add.msg.succes", new Object[] {clientDTO.getReference()}, Locale.FRENCH);
+        return ResponseEntity.ok().body(messageSource.getMessage("client.add.msg.succes", new Object[] {clientDTO.getReference()}, Locale.FRENCH));
+
     }
 }
