@@ -1,5 +1,6 @@
 package ma.atos.reclamation.services.impl;
 
+import ma.atos.reclamation.dto.B2BDTO;
 import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.entites.B2B;
 import ma.atos.reclamation.entites.B2C;
@@ -42,7 +43,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientDTO getClientByReference(String reference) {
 
         ClientDTO clientDTO = new ClientDTO();
-        Client client = clientRepository.getClientByReference(reference);
+        Client client = clientRepository.findByReference(reference);
 
         BeanUtils.copyProperties(client, clientDTO);
 
@@ -52,11 +53,15 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void createClient(ClientDTO clientDTO) {
 
-        if (clientDTO.getType().equals(TypeClient.B2B)) {
+        if (clientDTO.getTypeClient().equals(TypeClient.B2B)) {
             B2B b2b = new B2B();
+            BeanUtils.copyProperties(clientDTO, b2b);
+            clientRepository.save(b2b);
 
         }else {
             B2C b2C = new B2C();
+            BeanUtils.copyProperties(clientDTO, b2C);
+            clientRepository.save(b2C);
 
         }
 
