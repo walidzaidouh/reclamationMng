@@ -6,6 +6,7 @@ import ma.atos.reclamation.dto.RapprochementDTO;
 import ma.atos.reclamation.dto.TransactionDTO;
 import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Rapprochement;
+import ma.atos.reclamation.entites.Transaction;
 import ma.atos.reclamation.repositories.RapprochementRepository;
 import ma.atos.reclamation.services.RapprochementService;
 import ma.atos.reclamation.services.TransactionService;
@@ -16,6 +17,8 @@ import org.springframework.util.CollectionUtils;
 
 import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +32,7 @@ public class RapprochementServiceImpl implements RapprochementService {
     @Autowired
     private TransactionService transaction;
 
-
     // Injection par constrcuteur
-
-
 
     @Override
     public BigDecimal calculEcart(String refCaisse) {
@@ -91,8 +91,27 @@ public class RapprochementServiceImpl implements RapprochementService {
         RapprochementDTO rapprochementDTO = new RapprochementDTO();
 
         BeanUtils.copyProperties(rapprochement, rapprochementDTO);
-
         return rapprochementDTO;
+    }
+
+    @Override
+    public RapprochementDTO getRapprochementByDate(LocalDateTime date) {
+        System.out.println("testOk111S");
+        Rapprochement rapprochement2 = rapprochementRepository.findByDate(date);
+        System.out.println("testOk1111");
+        if(rapprochement2==null){
+            throw new EntityNotFoundException("Aucun rapprochement trouvé !");
+        }
+        RapprochementDTO rapprochementDTO = new RapprochementDTO();
+        BeanUtils.copyProperties(rapprochement2,rapprochementDTO);
+        return rapprochementDTO;
+    }
+
+    @Override
+    public void ajoutRapprochement(RapprochementDTO rapprochementDTO) {
+        Rapprochement rapprochement3 = new Rapprochement();
+        BeanUtils.copyProperties(rapprochementDTO, rapprochement3);
+        rapprochementRepository.save(rapprochement3);
     }
 }
 //Transaction transaction1 : transaction = (List<Transaction>) lF.get(i)
