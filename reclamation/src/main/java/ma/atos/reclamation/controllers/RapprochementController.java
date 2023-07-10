@@ -1,23 +1,24 @@
 package ma.atos.reclamation.controllers;
 
-import ma.atos.reclamation.dto.AgenceDTO;
+import lombok.extern.slf4j.Slf4j;
 import ma.atos.reclamation.dto.RapprochementDTO;
-import ma.atos.reclamation.dto.TransactionDTO;
 import ma.atos.reclamation.services.RapprochementService;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/rapprochement")
+@Slf4j
 public class RapprochementController {
 
    @Autowired
@@ -47,19 +48,20 @@ public class RapprochementController {
         }
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(rapprochement);
     }
+    @GetMapping("/getDate")
+    public ResponseEntity<?> getRapprochementByDate(@RequestParam(name = "date") String date) {
 
-    @GetMapping("/getDate/{date}")
-    public ResponseEntity<?> getRapprochementByDate(@PathVariable LocalDateTime date) {
-        System.out.println("testOk112");
-        RapprochementDTO rapprochement2 = null;
+        RapprochementDTO rapprochement = null;
+        LocalDate localDate = LocalDate.parse(date);
+        log.info("date  " + localDate);
         try {
-            System.out.println("testOk113");
-            rapprochement2 = rapprochementService.getRapprochementByDate(date);
-            System.out.println("testOk114");
+            rapprochement = rapprochementService.getRapprochementByDate(localDate);
+            log.info("rapprochement " + rapprochement);
         } catch (Exception e) {
             //ResponseEntity.status(HttpStatus.BAD_REQUEST).body(rapprochement);
+            log.error("Error " + e.getMessage());
         }
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(rapprochement2);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(rapprochement);
     }
 
     @PostMapping("/ajout")

@@ -1,17 +1,17 @@
 package ma.atos.reclamation.services.impl;
 
-import ma.atos.reclamation.dto.AgenceDTO;
+
+import lombok.extern.slf4j.Slf4j;
 import ma.atos.reclamation.dto.CaisseDTO;
 import ma.atos.reclamation.dto.RapprochementDTO;
 import ma.atos.reclamation.dto.TransactionDTO;
-import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.entites.Rapprochement;
-import ma.atos.reclamation.entites.Transaction;
 import ma.atos.reclamation.repositories.RapprochementRepository;
 import ma.atos.reclamation.services.RapprochementService;
 import ma.atos.reclamation.services.TransactionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -20,9 +20,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
+@Slf4j
 public class RapprochementServiceImpl implements RapprochementService {
 
     //private final Caisse caisse;
@@ -31,6 +34,8 @@ public class RapprochementServiceImpl implements RapprochementService {
     private RapprochementRepository rapprochementRepository;
     @Autowired
     private TransactionService transaction;
+    @Autowired
+    private MessageSource messageSource;
 
     // Injection par constrcuteur
 
@@ -86,7 +91,7 @@ public class RapprochementServiceImpl implements RapprochementService {
     public RapprochementDTO getRapprochementByReference(String reference) {
         Rapprochement rapprochement = rapprochementRepository.findByReference(reference);
         if(rapprochement==null){
-            throw new EntityNotFoundException("Aucun rapprochement trouvé !");
+            throw new EntityNotFoundException(messageSource.getMessage("rapprochement.not.found", new Object[] { }, Locale.FRENCH));
         }
         RapprochementDTO rapprochementDTO = new RapprochementDTO();
 
@@ -95,15 +100,28 @@ public class RapprochementServiceImpl implements RapprochementService {
     }
 
     @Override
-    public RapprochementDTO getRapprochementByDate(LocalDateTime date) {
-        System.out.println("testOk111S");
-        Rapprochement rapprochement2 = rapprochementRepository.findByDate(date);
-        System.out.println("testOk1111");
-        if(rapprochement2==null){
-            throw new EntityNotFoundException("Aucun rapprochement trouvé !");
+    public RapprochementDTO getRapprochementByDate(LocalDate date) {
+
+        // date -- Year, month, day
+        int year = date.getYear();
+        int month = date.getMonthValue();
+        int day = date.getDayOfMonth();
+
+        log.info("Start service getRapprochement By Date - year " +   year + " month " + month + " day " +  day);
+
+        Rapprochement rapprochement = rapprochementRepository.findByDate(year, month, day);
+
+        log.info("rapprochement " + rapprochement);
+
+        if(rapprochement==null){
+
+            throw new EntityNotFoundException(messageSource.getMessage("rapprochement.not.found", new Object[] { }, Locale.FRENCH));
         }
+
         RapprochementDTO rapprochementDTO = new RapprochementDTO();
-        BeanUtils.copyProperties(rapprochement2,rapprochementDTO);
+
+        BeanUtils.copyProperties(rapprochement,rapprochementDTO);
+
         return rapprochementDTO;
     }
 
