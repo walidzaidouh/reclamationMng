@@ -23,6 +23,7 @@ public class Client {
     private String adresse;
 
     @ManyToOne
+    @JoinColumn(name = "agence_id")
     private Agence agence;
 
     @OneToMany(mappedBy = "client")

@@ -7,6 +7,8 @@ import ma.atos.reclamation.repositories.AgenceRepository;
 import ma.atos.reclamation.services.AgenceService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +22,12 @@ public class AgenceServiceImpl implements AgenceService {
 
     @Autowired
     AgenceRepository agenceRepository;
+
+    @Autowired
+    RestTemplate restTemplate;
+
+    @Value("${api.agence.url}")
+    private String agenceUrl;
 
     @Override
     public List<AgenceDTO> list() {
@@ -47,7 +55,24 @@ public class AgenceServiceImpl implements AgenceService {
 
         BeanUtils.copyProperties(agence, agenceDTO);
 
+        List<ClientDTO> clientDTOList = new ArrayList<>();
+
+        if(!CollectionUtils.isEmpty(agence.getClientList())){
+            agence.getClientList().stream().forEach( client ->  {
+                ClientDTO clientDTO = new ClientDTO();
+                BeanUtils.copyProperties(client, clientDTO);
+                clientDTOList.add(clientDTO);
+            });
+        }
+        agenceDTO.setClientList(clientDTOList);
         return agenceDTO;
+    }
+
+    @Override
+    public AgenceDTO getAgenceByCodeRestTemplate(String code) {
+        String url = agenceUrl + "/" + code;
+        ResponseEntity<AgenceDTO> response = restTemplate.getForEntity(url, AgenceDTO.class);
+        return response.getBody();
     }
 
     @Override

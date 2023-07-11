@@ -1,5 +1,6 @@
 package ma.atos.reclamation.services.impl;
 
+import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.entites.B2B;
 import ma.atos.reclamation.entites.B2C;
@@ -9,14 +10,14 @@ import ma.atos.reclamation.repositories.ClientRepository;
 import ma.atos.reclamation.services.ClientService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -27,14 +28,17 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     RestTemplate restTemplate;
 
+    @Value("${api.agence.url}")
+    private String agenceUrl;
+
     @Override
     public List<ClientDTO> list() {
 
-        List<Client> agenceList =  clientRepository.findAll();
+        List<Client> clientList =  clientRepository.findAll();
 
         List<ClientDTO> clientDTOList = new ArrayList<>();
         if (!CollectionUtils.isEmpty(clientDTOList)) {
-            agenceList.stream().forEach(client -> {
+            clientList.stream().forEach(client -> {
                 ClientDTO clientDTO = new ClientDTO();
                 BeanUtils.copyProperties(client, clientDTO);
                 clientDTOList.add(clientDTO);
@@ -71,16 +75,12 @@ public class ClientServiceImpl implements ClientService {
         }
 
     }
-
     @Override
     public List<ClientDTO> getClientByAgence(String codeAgence) {
-
-        String agenceUrl = "http://localhost:8080/agence/get/{code}";
-
-        ResponseEntity<ClientDTO> response = restTemplate.getForEntity(agenceUrl, ClientDTO.class, codeAgence);
-
-        List<ClientDTO> clients = Arrays.asList(response.getBody());
-
-        return clients;
+        Map<String, String> paramsQuery = new HashMap<>();
+        paramsQuery.put("code",codeAgence);
+        ResponseEntity<AgenceDTO> response = restTemplate.exchange(agenceUrl, HttpMethod.GET,null,AgenceDTO.class, paramsQuery);
+        AgenceDTO agenceDTO = response.getBody();
+        return agenceDTO.getClientList();
     }
 }

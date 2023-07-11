@@ -4,6 +4,8 @@ import ma.atos.reclamation.dto.AgenceDTO;
 import ma.atos.reclamation.services.AgenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,8 +42,8 @@ public class AgenceController {
         return agenceList;
     }
 
-    @GetMapping("/get/{code}")
-    public AgenceDTO getAgenceByCode(@PathVariable String code) {
+    @GetMapping("/get")
+    public AgenceDTO getAgenceByCode(@RequestParam(name = "code") String code) {
 
         AgenceDTO agence = null;
         try {
@@ -50,6 +52,15 @@ public class AgenceController {
             e.printStackTrace();
         }
         return agence;
+    }
+
+    @GetMapping("/getByCode/{code}")
+    public ResponseEntity<AgenceDTO> getAgenceByCodeRestTemplate(@PathVariable String code) {
+        AgenceDTO agence = agenceService.getAgenceByCodeRestTemplate(code);
+        if (agence != null) {
+            return new ResponseEntity<>(agence, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/add")

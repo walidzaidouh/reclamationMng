@@ -12,6 +12,9 @@ public interface AgenceService {
 
     AgenceDTO getAgenceByCode(String code);
 
+    // We used in this Method RestTemplate !
+    AgenceDTO getAgenceByCodeRestTemplate(String code);
+
     void createAgence(AgenceDTO agenceDTO);
 
 }

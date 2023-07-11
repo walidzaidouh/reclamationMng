@@ -52,12 +52,13 @@ public class ClientController {
     @PostMapping("/add")
     public ResponseEntity<?> addClient(@RequestBody ClientDTO clientDTO) {
         clientService.createClient(clientDTO);
-        return ResponseEntity.ok().body(messageSource.getMessage("client.add.msg.succes", new Object[]{clientDTO.getReference()}, Locale.FRENCH));
+        return ResponseEntity.ok()
+                .body(messageSource.getMessage("client.add.msg.succes", new Object[]{clientDTO.getReference()}, Locale.FRENCH));
 
     }
 
-    @GetMapping("/getClientByAgence/{code}")
-    public ResponseEntity<?> getClientByAgence(@PathVariable String codeAgence) {
+    @GetMapping("/getClientByAgence")
+    public ResponseEntity<?> getClientByAgence(@RequestParam(name = "code") String codeAgence) {
 
         List<ClientDTO> client = null;
 
