@@ -35,7 +35,7 @@ public class ClientController {
         return ResponseEntity.ok().body(clientList);
     }
 
-    @GetMapping("/get/{code}")
+    @GetMapping("/get/{reference}")
     public ResponseEntity<ClientDTO> client(@PathVariable String reference) {
 
         ClientDTO client = null;
@@ -50,9 +50,22 @@ public class ClientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addClient(@RequestBody ClientDTO clientDTO){
+    public ResponseEntity<?> addClient(@RequestBody ClientDTO clientDTO) {
         clientService.createClient(clientDTO);
-        return ResponseEntity.ok().body(messageSource.getMessage("client.add.msg.succes", new Object[] {clientDTO.getReference()}, Locale.FRENCH));
+        return ResponseEntity.ok().body(messageSource.getMessage("client.add.msg.succes", new Object[]{clientDTO.getReference()}, Locale.FRENCH));
 
+    }
+
+    @GetMapping("/getClientByAgence/{code}")
+    public ResponseEntity<?> getClientByAgence(@PathVariable String codeAgence) {
+
+        List<ClientDTO> client = null;
+
+        try {
+            client = clientService.getClientByAgence(codeAgence);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok().body(client);
     }
 }

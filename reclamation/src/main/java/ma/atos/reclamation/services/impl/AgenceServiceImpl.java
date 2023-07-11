@@ -1,6 +1,7 @@
 package ma.atos.reclamation.services.impl;
 
 import ma.atos.reclamation.dto.AgenceDTO;
+import ma.atos.reclamation.dto.ClientDTO;
 import ma.atos.reclamation.entites.Agence;
 import ma.atos.reclamation.repositories.AgenceRepository;
 import ma.atos.reclamation.services.AgenceService;
@@ -8,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
